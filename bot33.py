@@ -2,7 +2,7 @@ import asyncio
 from playwright.async_api import async_playwright
 import pytesseract
 import random as r
-from data33 import contacts
+from data31 import contacts
 from PIL import Image
 
 def sisip(email, char):
@@ -72,7 +72,7 @@ async def main(nama, email, c):
 
             
             # 6. Masukk Hall
-            await page.wait_for_timeout(1000)
+            await page.wait_for_timeout(3000)
             # klik hall
             await page.mouse.click(277, 654)
             await page.wait_for_timeout(5000)
@@ -94,7 +94,7 @@ async def main(nama, email, c):
             #await page.mouse.click(170, 662) #poster kiri
             await page.mouse.click(540, 662) #poster kanan
             await page.wait_for_timeout(1000)
-            if(c<=10):            
+            if(c<=10 or 499):            
                 await page.screenshot(path=f"{c}_9last.png")
 
             print(f"Akun : ({c}) {nama} | Selesai")

@@ -28,7 +28,7 @@ async def main(nama, email, c):
             # 1. Buka halaman website
             #print("Membuka halaman website...")
             await page.goto("https://virtual-expo.lkpp.go.id/visitor/register")
-            await page.wait_for_timeout(1000)
+            await page.wait_for_timeout(2000)
            
             # 3. Isi data akun
             await page.fill("#profile_name", nama)
@@ -42,7 +42,7 @@ async def main(nama, email, c):
 
             await page.wait_for_timeout(1500)
             
-            if(c<=10):
+            if(c<=5):
                 await page.screenshot(path=f"{c}_0reg.png")
 
             page.wait_for_timeout(2000)
@@ -55,13 +55,13 @@ async def main(nama, email, c):
 
             # 4. Tombol lewati
             await page.mouse.click(352, 1007)
-            await page.wait_for_timeout(100)
+            await page.wait_for_timeout(200)
             await page.mouse.click(352, 1007)
-            await page.wait_for_timeout(7000) #memuat hall dengan banner
+            await page.wait_for_timeout(6000) #memuat hall dengan banner
             #await page.screenshot(path=f"{c}_2lewati.png")
 
             #Close banner
-            #await page.wait_for_timeout(5000)
+            #await page.wait_for_timeout(7000)
             #Tombol close banner
             await page.mouse.click(592, 531)
         
@@ -72,7 +72,7 @@ async def main(nama, email, c):
 
             
             # 6. Masukk Hall
-            await page.wait_for_timeout(3000)
+            await page.wait_for_timeout(5000)
             # klik hall
             await page.mouse.click(277, 654)
             await page.wait_for_timeout(5000)
@@ -94,7 +94,7 @@ async def main(nama, email, c):
             #await page.mouse.click(170, 662) #poster kiri
             await page.mouse.click(540, 662) #poster kanan
             await page.wait_for_timeout(1000)
-            if(c<=10 or c==199 or c==399):            
+            if(c<=5 or c==199 or c==299):            
                 await page.screenshot(path=f"{c}_9last.png")
 
             print(f"Akun : ({c}) {nama} | Selesai")
@@ -104,7 +104,7 @@ async def main(nama, email, c):
         await browser.close()
 
 if __name__ == "__main__":
-    jumlah = 400
+    jumlah = 300
     mulaiDari = 0
     print("Mulai...")
     for i in range (mulaiDari, mulaiDari+jumlah):
@@ -112,7 +112,7 @@ if __name__ == "__main__":
         nama = contact["nama"]
         #nama = nama[3:-3]
         email = contact["email"]
-        email = sisip(email, ".04")
+        email = sisip(email, "83")
         c = i-mulaiDari
         #print(f"Proses: {nama} ({email})")
         asyncio.run(main(nama, email, c))

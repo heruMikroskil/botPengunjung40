@@ -105,14 +105,14 @@ async def main(nama, email, c):
 
 if __name__ == "__main__":
     jumlah = 400
-    mulaiDari = 500
+    mulaiDari = 0
     print("Mulai...")
     for i in range (mulaiDari, mulaiDari+jumlah):
         contact = contacts[i]
         nama = contact["nama"]
         #nama = nama[3:-3]
         email = contact["email"]
-        email = sisip(email, "_4")
+        email = sisip(email, ".04")
         c = i-mulaiDari
         #print(f"Proses: {nama} ({email})")
         asyncio.run(main(nama, email, c))
